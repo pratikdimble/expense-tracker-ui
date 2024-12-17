@@ -11,23 +11,20 @@ const router = useRouter();
 const userForm = ref({ username: "", password: "" });
 const emsStore = useEmsStore()
 
-const login = async () => {
+// const login = async () => {
+//     await emsStore.login(userForm.value)
+// }
+const submitHandler = async() => {
     await emsStore.login(userForm.value)
-}
-const submitHandler = () => {
-    login()
     // userStore.login({ username: userForm.value.username });
     if(localStorage.getItem("userid") > 0){
         emsStore.error = null
         userStore.loginNew();
         router.replace({ path: "/" });
     } 
-    else
-        toast.error('Invalid Credentials');
-    // userStore.login({ username: userForm.value.username });
-    // router.replace({ path: "/" });
-    // if(localStorage.getItem("userid") > 0)
-    //  router.replace({ path: "/" });
+    // else
+    //     toast.error('Invalid Credentials');
+
 }
 </script>
 <template>

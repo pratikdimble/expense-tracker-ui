@@ -49,19 +49,6 @@ const deleteExpense = async (id) => {
         router.push('/login')
 }
 
-const handleSelection = async() => {
-    console.log(ordering.value)
-    // if(ordering.value =="asc")
-    //     await emsStore.sortEmployeeByJoiningDate(0)
-    // else
-    //     await emsStore.sortEmployeeByJoiningDate(1)
-}
-const handleSelectionDept = async() => {
-    console.log(selectedDept.value)
-    // await emsStore.getEmployeeByDepartment(selectedDept.value)
-
-}
-
 const searchCriteria = async() =>{
     // console.log(ordering.value)
     // console.log(filterBody.category +" ---------- "+filterBody.keyword)
@@ -79,8 +66,7 @@ onMounted(async () => {
 <template>
     <section id="emp-list" class="list-employee-container">
         <h2>My Expenses</h2>
-        <small>
-            <p>
+        <p class="grid">
                 <select v-model="filterBody.category" @change="handleSelectionDept" class="dropdown-container">
                     <option disabled value="00" selected>Please select a category</option>
                     <option value="Food">Food</option>
@@ -89,32 +75,22 @@ onMounted(async () => {
                     <option value="Entertainment">Entertainment</option>
                     <option value="Miscellaneous">Miscellaneous</option>
                 </select>
-            </p>
-        </small>
-        
-        <small>
-            <p>
+       
                 <label for="simpleInput" class="input-label">Keyword</label>
                 <input id="simpleInput" v-model="filterBody.keyword" type="text" placeholder="Enter keyword" class="input-field" />
                 <input id="simpleInputfdate" v-model="filterBody.fromDate" type="date"  class="input-field" />
                 <input id="simpleInputldate" v-model="filterBody.toDate" type="date"  class="input-field" />
-  
-                <!-- <label>Keyword <input v-model="keyword" :type="String" :id="id" /></label> -->
-                <!-- <label>view as:<input type="radio" v-model="showCard" value="card" />cards<input type="radio" v-model="showCard" value="table" />table -->
-                <!-- <label>Sort By Date:
-                    <input type="radio" v-model="ordering" value="asc" @change="handleSelection" />Ascending
-                    <input type="radio" v-model="ordering" value="desc" @change="handleSelection" />Descending
-                </label> -->
-                <!-- </label> -->
             </p>
-        </small>
         <small><button @click="searchCriteria">Search</button></small>
         <div v-if="emsStore.error" class="errormessage">{{ emsStore.error }}</div>
-        <!-- <EmsCards v-if="showCard === 'card'" :loading="emsStore.loading" :empList="emsStore.empList" @edit-click="editExpense" @remove-click="deleteExpense" /> -->
         <EmsTable v-if="showCard === 'table'" :loading="emsStore.loading" :empList="emsStore.empList" @edit-click="editExpense" @remove-click="deleteExpense" />
     </section>
 </template>
 <style scoped>
+.input-label{
+    align-content: center;
+    margin-left: 40px;
+}
 .list-employee-container {
 
     margin-top: 50px;
@@ -132,5 +108,20 @@ onMounted(async () => {
 .error-message {
     color: red;
     margin-bottom: 15px;
+}
+.container {
+  width: 100%;         /* Ensure container takes up full width */
+  height: 100vh;       /* Use full viewport height */
+  display: flex;
+  justify-content: center; /* Center grid horizontally */
+  align-items: center; /* Center grid vertically */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 100%fr); /* Example: 3 equal columns */
+  gap: 0px;       /* Space between grid items */
+  width: 227%;       /* Grid width */
+  height: 100%;      /* Grid height */
 }
 </style>

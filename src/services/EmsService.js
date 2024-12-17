@@ -25,15 +25,6 @@ export const EmsService = {
     }
   },
 
-  async getEmployees() {
-    try {
-      const response = await axios.get(`${API_BASE_URL}${GET_ALL_EXPENSES}/${userId}`);
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch employees");
-    }
-  },
-
   async fetchExpensesByUser(userid) {
     try {
       const response = await axios.get(`${API_BASE_URL}${GET_ALL_EXPENSES}${userid}`);
@@ -91,28 +82,6 @@ export const EmsService = {
       return response.data;
     } catch (error) {
       throw new Error("Failed to fetch expenses");
-    }
-  },
-
-
-
-
-
-  async getEmployeeByDepartment(dept) {
-    try {
-      const response = await axios.get(`${API_BASE_URL}${API_SEARCH_BY_DEPT}${dept}`);
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch employees");
-    }
-  },
-
-  async sortEmployeeByJoiningDate(order) {
-    try {
-      const response = await axios.get(`${API_BASE_URL}${SORT_EMPLOYEE_JOIN_DATE_ASC_DESC}${order}`);
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch employees");
     }
   },
 }

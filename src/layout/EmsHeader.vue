@@ -74,9 +74,6 @@ const logout = () => {
                     <li>
                         <RouterLink to="/summary" exact-active-class="active">Monthly Summary</RouterLink>
                     </li>
-                    <!-- <li>
-                        <RouterLink to="/delete" exact-active-class="active">Employee Delete </RouterLink>
-                    </li> -->
                     <li>
                         <RouterLink to="#" exact-active-class="active" @click="logout">Logout</RouterLink>
                     </li>

@@ -20,21 +20,13 @@ export const useEmsStore = defineStore('emsStore', {
                  await EmsService.login(user)
             } catch (err) {
                 this.loading = false;
+                toast.error('Invalid Credentials');
                 // this.error = 'Invalid Credentials';
             } finally {
                 this.loading = false;
             }
         },
-        async fetchEmps() {
-            this.loading = true;
-            try {
-                this.empList = await EmsService.getEmployees()
-            } catch (err) {
-                this.error = 'Failed to fetch employees';
-            } finally {
-                this.loading = false;
-            }
-        },
+
         async fetchExpensesByUser(userid) {
             this.loading = true;
             try {
@@ -103,31 +95,6 @@ export const useEmsStore = defineStore('emsStore', {
             } finally {
                 this.loading = false;
             }
-        },
-
-
-
-        
-        async getEmployeeByDepartment(dept) {
-            this.loading = true;
-            try {
-                this.empList = await EmsService.getEmployeeByDepartment(dept)
-            } catch (err) {
-                this.error = 'Failed to fetch employees';
-            } finally {
-                this.loading = false;
-            }   
-        },
-        
-        async sortEmployeeByJoiningDate(order) {
-            this.loading = true;
-            try {
-                this.empList = await EmsService.sortEmployeeByJoiningDate(order)
-            } catch (err) {
-                this.error = 'Failed to fetch employees';
-            } finally {
-                this.loading = false;
-            }   
         },
     },
 });
