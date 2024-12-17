@@ -12,6 +12,6 @@ import EmsHeader from './EmsHeader.vue';
             </transition>
         </RouterView>
     </main>
-    <EmsFooter />
+    <!-- <EmsFooter /> -->
 </template>
 <style scoped></style>

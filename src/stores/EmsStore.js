@@ -10,7 +10,8 @@ export const useEmsStore = defineStore('emsStore', {
         empList: [],
         loading: false,
         error: null,
-        validationErrors: {}
+        validationErrors: {},
+        summaryList:[]
     }),
     actions: {
         async login(user) {
@@ -92,6 +93,20 @@ export const useEmsStore = defineStore('emsStore', {
                 this.loading = false;
             }
         },
+
+        async summaryExpense (userid) {
+            this.loading = true;
+            try {
+                this.summaryList = await EmsService.summaryExpense(userid)
+            } catch (err) {
+                this.error = 'Failed to fetch my expenses';
+            } finally {
+                this.loading = false;
+            }
+        },
+
+
+
         
         async getEmployeeByDepartment(dept) {
             this.loading = true;

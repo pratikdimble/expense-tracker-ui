@@ -71,9 +71,9 @@ const logout = () => {
                     <li>
                         <RouterLink to="/add" exact-active-class="active">Add Expense</RouterLink>
                     </li>
-                    <!-- <li>
-                        <RouterLink to="/search" exact-active-class="active">Employee Search</RouterLink>
-                    </li> -->
+                    <li>
+                        <RouterLink to="/summary" exact-active-class="active">Monthly Summary</RouterLink>
+                    </li>
                     <!-- <li>
                         <RouterLink to="/delete" exact-active-class="active">Employee Delete </RouterLink>
                     </li> -->

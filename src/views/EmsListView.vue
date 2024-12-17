@@ -28,7 +28,7 @@ selectedDept.value="00"
 keyword.value =""
 
 const filterBody = ref({
-    category: '',
+    category: null,
     userId:userid,
     fromDate: '2024-12-15',
     toDate: '2024-12-17',
@@ -96,6 +96,8 @@ onMounted(async () => {
             <p>
                 <label for="simpleInput" class="input-label">Keyword</label>
                 <input id="simpleInput" v-model="filterBody.keyword" type="text" placeholder="Enter keyword" class="input-field" />
+                <input id="simpleInputfdate" v-model="filterBody.fromDate" type="date"  class="input-field" />
+                <input id="simpleInputldate" v-model="filterBody.toDate" type="date"  class="input-field" />
   
                 <!-- <label>Keyword <input v-model="keyword" :type="String" :id="id" /></label> -->
                 <!-- <label>view as:<input type="radio" v-model="showCard" value="card" />cards<input type="radio" v-model="showCard" value="table" />table -->

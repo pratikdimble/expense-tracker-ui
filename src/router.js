@@ -9,6 +9,7 @@ import HomeLayout from './layout/HomeLayout.vue'
 
 import { useUserStore } from './stores/userStore';
 import EmsSearchView from './views/EmsSearchView.vue'
+import EmsSummary from './views/EmsSummary.vue'
 
 function isLoggedIn() {
     const userStore = useUserStore()
@@ -53,6 +54,12 @@ const routes = [
                 path: '/edit/:expenseId',
                 name: 'EmployeeEdit',
                 component: EmsEditView,
+                props: true,
+            },
+            {
+                path: '/summary',
+                name: 'ExpenseSummary',
+                component: EmsSummary,
                 props: true,
             },
             {

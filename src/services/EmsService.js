@@ -6,6 +6,7 @@ const AUTH_URL = "http://localhost:8080/api/login";
 const API_BASE_URL = "http://localhost:8080/api/expense";
 const GET_ALL_EXPENSES = "/users/";
 const FILTER_API = "/filter";
+const SUMMARY_EXPENSES ="/summary";
 
 
 const SORT_EMPLOYEE_JOIN_DATE_ASC_DESC = "/users/sort/"
@@ -84,7 +85,14 @@ export const EmsService = {
       throw new Error("Failed to fetch expenses");
     }
   },
-  
+  async summaryExpense(userid) {
+    try {
+      const response = await axios.get(`${API_BASE_URL}${SUMMARY_EXPENSES}/${userid}`);
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to fetch expenses");
+    }
+  },
 
 
 
